@@ -1,10 +1,19 @@
-<div>
-    <h3>
-        <a [title]="product.name + ' ' + 'deets'" [routerLink]="['/products', product.id]">{{ product.name }}</a>
-    </h3>
-    <img src="{{ product.url }}" alt="{{ product.name }}">
-    <p>Product: {{ product.price | currency }}</p>
-    <p *ngIf="product.description"> Description: {{ product.description }} </p>
-    <!-- <button type="button" (click)="share()">Share</button> -->
-    <!-- <button type="button" (click)="addToCart(product)">Add to Cart Icon</button>         -->
+<div class="product-card">
+  <mat-card>
+    <mat-card-header class="card-header">
+      <mat-card-title class="card-title">
+        <a [title]="product.name + ' ' + 'details'" [routerLink]="['/products', product.id]">{{ product.name }}</a>
+      </mat-card-title>
+    </mat-card-header>
+    <div class="image">
+      <img src="{{ product.url }}" alt="{{ product.name }}" mat-card-image>
+    </div>
+    <mat-card-content class="content">
+      <p *ngIf="product.description"> Description: {{ product.description }} </p>
+      <span>Product: {{ product.price | currency }}</span>
+    </mat-card-content>
+    <mat-card-actions class="card-buttons">
+      <button mat-icon-button (click)="addToCart(product)">Add to Cart</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

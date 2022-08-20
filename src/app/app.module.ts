@@ -11,7 +11,9 @@ import { CartComponent } from './components/cart/cart.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

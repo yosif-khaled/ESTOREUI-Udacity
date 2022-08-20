@@ -1,0 +1,33 @@
+*{
+    background-color: azure;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(5, 60, 90);
+}
+
+.product-card{ 
+    max-width: 25rem;
+    margin: auto;
+    padding: 1rem;
+}
+
+.card-header{
+    display: flex;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
+}
+
+.image {
+    align-content: center;
+    margin: 5px 5px 5px 5px;
+    justify-content: center;
+    border: 5px solid wheat;
+    margin: 5px 5px 5px 5px;
+    padding: 25px 25px 25px 25px;
+}
+
+.content {
+    padding: 10px;
+    font-size: x-large;
+}

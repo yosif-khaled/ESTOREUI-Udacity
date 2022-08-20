@@ -1,10 +1,14 @@
-<div>
-  <a [routerLink]="['/']">
-    <h1>Online Store</h1>
-</a>
-</div>
-
-<nav>
-  <a routerLink="">Product-List</a>
-  <a routerLink="/cart">Shopping Cart</a>
-</nav>
+<mat-toolbar class="navbar">
+  <div><a [routerLink]="['/']">
+    <h1> Online Store </h1>
+      </a>
+  </div>
+  <div>
+    <a routerLink="">
+      <span> Product-List </span>
+    </a>
+    <a routerLink="/cart">
+      <span> Shopping Cart </span>
+    </a>
+  </div>
+</mat-toolbar>
