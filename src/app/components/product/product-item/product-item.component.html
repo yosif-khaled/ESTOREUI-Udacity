@@ -1,0 +1,10 @@
+<div>
+    <h3>
+        <a [title]="product.name + ' ' + 'deets'" [routerLink]="['/products', product.id]">{{ product.name }}</a>
+    </h3>
+    <img src="{{ product.url }}" alt="{{ product.name }}">
+    <p>Product: {{ product.price | currency }}</p>
+    <p *ngIf="product.description"> Description: {{ product.description }} </p>
+    <!-- <button type="button" (click)="share()">Share</button> -->
+    <!-- <button type="button" (click)="addToCart(product)">Add to Cart Icon</button>         -->
+</div>
