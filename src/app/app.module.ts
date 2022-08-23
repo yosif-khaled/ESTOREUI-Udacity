@@ -10,6 +10,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { FormsModule } from '@angular/forms';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SubmitionFormComponent } from './components/submition-form/submition-form.component';
 

@@ -9,20 +9,14 @@ import { HttpService } from 'src/app/services/http/http-service.service'
 })
 export class ProductListComponent implements OnInit {
 
-  products!: Product[];
+  products: Product[] = this.httpService.getProducts();
 
   constructor(
     private httpService: HttpService,
   ) { }
 
   ngOnInit(): void {
-    this.getProducts();
-  }
-
-  getProducts(): void {
-    this.httpService.getJSON().subscribe(data => {
-      this.products = data
-    });
+    console.log(this.products);
   }
 
 }

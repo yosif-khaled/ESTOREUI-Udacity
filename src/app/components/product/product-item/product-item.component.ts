@@ -24,4 +24,8 @@ export class ProductItemComponent implements OnInit {
     window.alert('Your product has been added to cart');
   }
 
+  removeProductFromCart(id: number){
+   this.cartService.removeFromCart(id); 
+  }
+
 }

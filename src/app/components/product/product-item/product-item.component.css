@@ -44,7 +44,7 @@
 }
 
 .image {
-    transition: 0.5s ease;
+    transition: 1s ease;
     backface-visibility: hidden;
 }
 
@@ -58,9 +58,12 @@
 }
 
 .img-container:hover .image {
-    opacity: 0.2;
+    color: aqua;
+    opacity: 0.6;
 }
 
 .img-container:hover .overlay {
+    color: aqua;
+    transition: .5s ease;
     opacity: 1;
 }

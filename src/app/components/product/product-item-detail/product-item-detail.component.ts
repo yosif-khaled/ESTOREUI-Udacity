@@ -18,14 +18,9 @@ export class ProductItemDetailComponent implements OnInit {
     private httpService: HttpService,
   ) { }
 
-  getProducts(): void {
-    this.httpService.getJSON().subscribe(data => {
-      this.products = data
-    });
-  }
-
+  
   ngOnInit(): void {
-    this.getProducts();
+    this.products = this.httpService.getProducts();
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
     this.product = this.products.find( product => product.id === productIdFromRoute );

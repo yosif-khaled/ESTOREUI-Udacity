@@ -3,13 +3,21 @@
     <div class="img-container">
       <img src="{{ product.url }}" alt="{{ product.name }}" class="image card-img-top">
       <div class="overlay">
-        <button class="btn btn-outline-secondary btn-sm" (click)="addToCart(product)">
-          <i class="fas fa-cart-plus mr-2"></i>
-          Add to Cart</button>
+        <button 
+          class="btn btn-outline-primary btn-lg" 
+          (click)="addToCart(product)">
+            <i class="fas fa-cart-plus mr-2"></i>
+        </button>
       </div>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Lorem ipsum</h5>
+      <h5 class="card-title">
+        <a
+        [title]="product.name + ' ' + 'Click for Description'"
+        [routerLink]="['/products', product.id]">
+        {{ product.name }}
+      </a>
+      </h5>
       <h6 class="card-subtitle mb-2 text-muted">Product: {{ product.price | currency }}</h6>
       <p class="card-text" *ngIf="product.description">Description: Description: {{ product.description }}</p>
     </div>

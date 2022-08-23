@@ -1,3 +1,4 @@
+import { identifierName, TemplateBindingParseResult } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/product-model';
 
@@ -7,14 +8,16 @@ import { Product } from 'src/app/models/product-model';
 export class CartService {
   items: Product[] = [];
   
+  
   constructor() { }
 
   addToCart(product: Product) {
     this.items.push(product);
   }
 
-  removeFromCart(product: Product) {
-    // this.items.pop(product);
+  // these functions should be in the cart component
+  removeFromCart(id: number) {
+    this.items.pop();
   }
 
   getItems() {
@@ -26,6 +29,12 @@ export class CartService {
     return this.items;
   }
 
-  returnTotal() {}
+  returnTotalOfOneItem(id: number, quantity: number) {
+    
+  }
+
+  returnTotalOfAllItems() {
+
+  }
 
 }
