@@ -1,19 +1,17 @@
-<div class="product-card">
-  <mat-card>
-    <mat-card-header class="card-header">
-      <mat-card-title class="card-title">
-        <a [title]="product.name + ' ' + 'details'" [routerLink]="['/products', product.id]">{{ product.name }}</a>
-      </mat-card-title>
-    </mat-card-header>
-    <div class="image">
-      <img src="{{ product.url }}" alt="{{ product.name }}" mat-card-image>
+<div class="col-lg-4 mb-3">
+  <div class="card" id="product-card">
+    <div class="img-container">
+      <img src="{{ product.url }}" alt="{{ product.name }}" class="image card-img-top">
+      <div class="overlay">
+        <button class="btn btn-outline-secondary btn-sm" (click)="addToCart(product)">
+          <i class="fas fa-cart-plus mr-2"></i>
+          Add to Cart</button>
+      </div>
     </div>
-    <mat-card-content class="content">
-      <p *ngIf="product.description"> Description: {{ product.description }} </p>
-      <span>Product: {{ product.price | currency }}</span>
-    </mat-card-content>
-    <mat-card-actions class="card-buttons">
-      <button mat-icon-button (click)="addToCart(product)">Add to Cart</button>
-    </mat-card-actions>
-  </mat-card>
+    <div class="card-body">
+      <h5 class="card-title">Lorem ipsum</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Product: {{ product.price | currency }}</h6>
+      <p class="card-text" *ngIf="product.description">Description: Description: {{ product.description }}</p>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product, products } from 'src/app/models/product-model';
+import { HttpService } from 'src/app/services/http/http-service.service'
+import { Product } from 'src/app/models/product-model';
 
 @Component({
   selector: 'app-product-item-detail',
@@ -10,16 +11,24 @@ import { Product, products } from 'src/app/models/product-model';
 export class ProductItemDetailComponent implements OnInit {
 
   product: Product | undefined;
+  products!: Product[];
 
   constructor(
     private route: ActivatedRoute,
+    private httpService: HttpService,
   ) { }
 
+  getProducts(): void {
+    this.httpService.getJSON().subscribe(data => {
+      this.products = data
+    });
+  }
+
   ngOnInit(): void {
+    this.getProducts();
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
-
-    this.product = products.find( product => product.id === productIdFromRoute );
+    this.product = this.products.find( product => product.id === productIdFromRoute );
   }
 
 }

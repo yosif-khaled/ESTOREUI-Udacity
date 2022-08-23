@@ -9,12 +9,12 @@ import { HttpService } from 'src/app/services/http/http-service.service'
 })
 export class ProductListComponent implements OnInit {
 
-  // products = [...products];
   products!: Product[];
 
   constructor(
     private httpService: HttpService,
   ) { }
+
   ngOnInit(): void {
     this.getProducts();
   }

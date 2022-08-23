@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,10 +9,9 @@ import { ProductItemDetailComponent } from './components/product/product-item-de
 import { CartComponent } from './components/cart/cart.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SubmitionFormComponent } from './components/submition-form/submition-form.component';
 
 @NgModule({
   declarations: [
@@ -24,15 +22,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CartComponent,
     NavBarComponent,
     ConfirmationComponent,
+    SubmitionFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
+    FormsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <h3>Please Fill The Form</h3>
+  <form #customerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div action="form-group">
+      <label>name</label>
+      <input required type="text" name="userName" #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+        class="form-control" [(ngModel)]="customerData.name">
+
+      <small class="text-danger" [class.d-none]="name.valid || name.touched">Name is required</small>
+    </div>
+
+    <div action="form-group">
+      <label>email</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="customerData.email">
+    </div>
+
+    <!-- update to credit card number -->
+    <div action="form-group">
+      <label>Credit Card</label>
+      <input type="card" #card="ngModel" pattern="^\d{11}$" required [class.is-invalid]="card.invalid && card.touched"
+        class="form-control" name="card" [(ngModel)]="customerData.card">
+
+      <div *ngIf="card.errors && (card.invalid || card.touched)">
+        <small class="text-danger" *ngIf="card.errors?.['required']">Phone Number is Required</small>
+        <small class="text-danger" *ngIf="card.errors?.['pattern']">Number Must be 11 Digits</small>
+      </div>
+    </div>
+
+    <br>
+    <button [disabled]="customerForm.form.invalid || customerForm.form.untouched" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
