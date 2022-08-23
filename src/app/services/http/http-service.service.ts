@@ -9,8 +9,7 @@ import { Product } from 'src/app/models/product-model';
 
 export class HttpService {
 
-  items: Product[] = [];
-
+  products: Product[] = [];
   private _jsonURL: string = 'assets/data.json';
 
   constructor(
@@ -23,9 +22,16 @@ export class HttpService {
 
   getProducts() {
     this.getJSON().subscribe(data => {
-      this.items = data
-      console.log(this.items);
+      this.products = data
+      console.log(this.products);
   });
-    return this.items;
+    return this.products;
   }
+
+  // getProducts() {
+  //   this.http.get<Product[]>(this._jsonURL).subscribe(
+  //     data => this.products = data 
+  //   );
+  //   return this.products;
+  // }
 }

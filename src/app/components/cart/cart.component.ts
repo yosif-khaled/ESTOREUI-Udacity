@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart/cart.service';
 
 
@@ -11,14 +12,14 @@ export class CartComponent implements OnInit {
 
   items = this.cartService.getItems();
 
-  // count: number = 1;
-  // price!: number;
+  count: number = 1;
+  price!: number;
 
-  // incrementQuantity(){
-  //   this.count += 1;
-  //   this.price = this.items[0].price;
-  //   this.price *= this.count;
-  // }
+  incrementQuantity(){
+    this.count += 1;
+    this.price = this.items[0].price;
+    this.price *= this.count;
+  }
 
   constructor(
     private cartService: CartService,
@@ -32,5 +33,7 @@ export class CartComponent implements OnInit {
   //   this.items = this.cartService.clearItems();
   //   this.checkoutForm.reset();
   // }
-  // separate the following code into a separate component
+  removeFromCart(product: Product) {
+    this.cartService.removeFromCart(product);
+  }
 }

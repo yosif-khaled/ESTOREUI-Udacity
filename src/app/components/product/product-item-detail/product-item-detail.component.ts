@@ -9,7 +9,7 @@ import { Product } from 'src/app/models/product-model';
   styleUrls: ['./product-item-detail.component.css']
 })
 export class ProductItemDetailComponent implements OnInit {
-
+  
   product: Product | undefined;
   products!: Product[];
 
@@ -21,6 +21,10 @@ export class ProductItemDetailComponent implements OnInit {
   
   ngOnInit(): void {
     this.products = this.httpService.getProducts();
+    this.getProductById();
+  }
+
+  getProductById(){
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
     this.product = this.products.find( product => product.id === productIdFromRoute );

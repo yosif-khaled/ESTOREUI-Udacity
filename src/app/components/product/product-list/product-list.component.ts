@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Product } from 'src/app/models/product-model';
 import { HttpService } from 'src/app/services/http/http-service.service'
 
@@ -7,27 +7,17 @@ import { HttpService } from 'src/app/services/http/http-service.service'
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
 
-  products: Product[] = this.httpService.getProducts();
+export class ProductListComponent implements OnInit{
+
+  products: Product[] = [];
 
   constructor(
-    private httpService: HttpService,
+    private httpService: HttpService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.products);
+    this.products = this.httpService.getProducts();
   }
 
 }
-
-// private _jsonURL = 'assets/data.json';
-
-// products: any = [];
-
-// constructor(private httpClient: HttpClient){}
-// ngOnInit(){
-//   this.httpClient.get<Observable<Product[]>>(this._jsonURL).subscribe(data =>{
-//     this.products = data;
-//   })
-// }  

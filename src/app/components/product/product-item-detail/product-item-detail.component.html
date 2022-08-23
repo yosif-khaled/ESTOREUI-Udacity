@@ -1,7 +1,16 @@
-<h2>Product Details</h2>
-
-<div *ngIf="product">
-    <h3>{{ product.name }}</h3>
-    <h4>{{ product.price | currency }}</h4>
-    <p>{{ product.description }}</p>
+<div class="card" id="product-details-card" *ngIf="product">
+  <div class="card-body">
+    <h4 class="card-title">{{ product.name }}</h4>
+    <br>
+    <div class="img-container">
+      <img src="{{ product.url }}" alt="{{ product.name }}" class="image card-img-top">
+    </div>
+    <br>
+    <h3 class="card-subtitle mb-2 text-muted">Price: {{ product.price | currency }}</h3>
+    <br>
+    <hr>
+    <p class="card-text" *ngIf="product.description">Description: {{ product.description }}</p>
+    <br><hr>
+    <h6><a [routerLink]="['']">Back To Products</a></h6>
+  </div>
 </div>

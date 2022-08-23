@@ -1,4 +1,3 @@
-import { identifierName, TemplateBindingParseResult } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/product-model';
 
@@ -16,8 +15,12 @@ export class CartService {
   }
 
   // these functions should be in the cart component
-  removeFromCart(id: number) {
-    this.items.pop();
+  removeFromCart(product: Product) {
+    // will take time finish it last
+    let index = this.items.indexOf(product);
+    if (index !== -1) {
+      this.items.splice(index, 1);
+    }
   }
 
   getItems() {

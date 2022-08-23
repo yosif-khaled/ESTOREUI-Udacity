@@ -5,7 +5,7 @@
       <div class="overlay">
         <button 
           class="btn btn-outline-primary btn-lg" 
-          (click)="addToCart(product)">
+          (click)="addToCart(product)" name="addToCart">
             <i class="fas fa-cart-plus mr-2"></i>
         </button>
       </div>
@@ -19,7 +19,6 @@
       </a>
       </h5>
       <h6 class="card-subtitle mb-2 text-muted">Product: {{ product.price | currency }}</h6>
-      <p class="card-text" *ngIf="product.description">Description: Description: {{ product.description }}</p>
     </div>
   </div>
 </div>
