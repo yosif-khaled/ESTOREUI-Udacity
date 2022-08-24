@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, tap, retry } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/models/product-model';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,32 +10,15 @@ import { Product } from 'src/app/models/product-model';
 
 export class HttpService {
 
-  products: Product[] = [];
-  private _jsonURL: string = 'assets/data.json';
+  products!: Product[];
+  jsonURL: string = 'assets/data.json';
 
   constructor(
     private http: HttpClient,
+    // private route: ActivatedRoute,
   ) { }
 
-  // these functions should be called asynchoronously
+  getJSON(): Observable<Product[]> { return this.http.get<Product[]>(this.jsonURL); }
 
-  getJSON(): Observable<any>{
-    return this.http.get(this._jsonURL);
-  }
-
-  getProducts() {
-    this.getJSON().subscribe(data => {
-      this.products = data
-      console.log(this.products);
-  });
-    return this.products;
-  }
-
-  // getProducts() {
-  //   this.http.get<Product[]>(this._jsonURL).subscribe(
-  //     data => this.products = data 
-  //   );
-  //   return this.products;
-  // }
 }
 

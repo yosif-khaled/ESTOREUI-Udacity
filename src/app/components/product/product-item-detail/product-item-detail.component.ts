@@ -9,7 +9,7 @@ import { Product } from 'src/app/models/product-model';
   styleUrls: ['./product-item-detail.component.css']
 })
 export class ProductItemDetailComponent implements OnInit {
-  
+
   product: Product | undefined;
   products!: Product[];
 
@@ -18,16 +18,20 @@ export class ProductItemDetailComponent implements OnInit {
     private httpService: HttpService,
   ) { }
 
-  
+
   ngOnInit(): void {
-    this.products = this.httpService.getProducts();
     this.getProductById();
   }
 
-  getProductById(){
+  getProductById() {
     const routeParams = this.route.snapshot.paramMap;
-    const productIdFromRoute = Number(routeParams.get('productId'));
-    this.product = this.products.find( product => product.id === productIdFromRoute );
+    const id = Number(routeParams.get('productId')) - 1;
+    console.log('fetching data');
+    let p!: Product;
+    this.httpService.getJSON().subscribe(data => {
+      this.products = data
+      console.log(this.products[id]);
+      this.product = this.products[id];
+    });
   }
-
 }

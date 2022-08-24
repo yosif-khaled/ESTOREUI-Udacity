@@ -3,9 +3,20 @@
     <div class="img-container">
       <img src="{{ product.url }}" alt="{{ product.name }}" class="image card-img-top">
       <div class="overlay">
-        <button class="btn btn-outline-primary btn-lg" (click)="addToCart(product)" name="addToCart">
-          <i class="fas fa-cart-plus mr-2"></i>
-        </button>
+        <div id="overlay-btn">
+          <button class="btn btn-outline-primary btn-lg" (click)="increment()" name="incrementQnty">
+            <i class="fas fa-cart-plus mr-2"></i>
+          </button>
+          <button class="btn btn-outline-primary btn-lg" (click)="addToCart(product)" name="addToCart">
+            <i class="fas fa-cart-plus mr-2"></i>
+          </button>
+          <button class="btn btn-outline-primary btn-lg" (click)="decrement()" name="decrementQnty">
+            <i class="fas fa-cart-plus mr-2"></i>
+          </button>
+        </div>
+        <div id="overlay-qnty">
+          {{qnty}}
+        </div>
       </div>
     </div>
     <div class="card-body">

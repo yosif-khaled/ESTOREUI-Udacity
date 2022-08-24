@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart/cart.service';
 })
 export class ProductItemComponent implements OnInit {
   
+  qnty: number = 1;
   @Input('product') product!: Product;
 
   constructor(
@@ -17,9 +18,20 @@ export class ProductItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.product.qnty = this.qnty;
+  }
+
+  increment() {
+    this.qnty++;
+  }
+
+  decrement() {
+    if(this.qnty == 1 || this.qnty<= 0) this.qnty = 1;
+    else this.qnty--;
   }
 
   addToCart(product: Product) {
+    this.product.qnty = this.qnty;
     this.cartService.addToCart(product);
     window.alert('Your product has been added to cart');
   }
