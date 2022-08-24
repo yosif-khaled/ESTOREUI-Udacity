@@ -32,12 +32,4 @@ export class CartService {
     return this.items;
   }
 
-  returnTotalOfOneItem(id: number, quantity: number) {
-    
-  }
-
-  returnTotalOfAllItems() {
-
-  }
-
 }

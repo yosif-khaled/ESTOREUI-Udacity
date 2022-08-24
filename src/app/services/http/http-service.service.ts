@@ -16,6 +16,8 @@ export class HttpService {
     private http: HttpClient,
   ) { }
 
+  // these functions should be called asynchoronously
+
   getJSON(): Observable<any>{
     return this.http.get(this._jsonURL);
   }
@@ -35,3 +37,4 @@ export class HttpService {
   //   return this.products;
   // }
 }
+

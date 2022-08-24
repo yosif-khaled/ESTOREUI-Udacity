@@ -14,17 +14,23 @@
       <th>{{item.id}}</th>
       <td>{{item.name}}</td>
       <td>
-        <button>+</button>
-        <p>4</p>
-        <button>-</button>
+        <button (click)="incrementQuantity(item)">+</button>
+        <p>{{ item.qnty }}</p>
+        <button (click)="decrementQuantity(item)">-</button>
       </td>
       <td>{{item.price}}</td>
-      <td>total</td>
+      <td>{{item.price * item.qnty!}}</td>
       <td>
         <button (click)="removeFromCart(item)"></button>
       </td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <td>Grand Total</td>
+      <td>{{calculateGrandTotal()}}</td>
+    </tr>
+  </tfoot>
 </table>
 
 <div>

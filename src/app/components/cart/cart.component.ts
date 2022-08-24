@@ -1,31 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart/cart.service';
-
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
 
   items = this.cartService.getItems();
 
-  count: number = 1;
-  price!: number;
-
-  incrementQuantity(){
-    this.count += 1;
-    this.price = this.items[0].price;
-    this.price *= this.count;
-  }
+  total: number = 0;
 
   constructor(
     private cartService: CartService,
   ) { }
 
-  ngOnInit(): void {
+  incrementQuantity(item: Product){
+    item.qnty! += 1;
+  }
+  decrementQuantity(item: Product){
+    if (item.qnty! <= 1){
+      this.removeFromCart(item);
+      return;
+    } else {
+      item.qnty! -= 1;
+    }  
+  }
+
+  calculateGrandTotal(): number {
+    let grandTotal:number = 0;
+    for(let item of this.items){
+      grandTotal += (item.qnty! * item.price);
+    }
+    return grandTotal;
+  }
+
+  removeFromCart(product: Product) {
+    this.cartService.removeFromCart(product);
   }
 
   // onSubmit(): void {
@@ -33,7 +46,5 @@ export class CartComponent implements OnInit {
   //   this.items = this.cartService.clearItems();
   //   this.checkoutForm.reset();
   // }
-  removeFromCart(product: Product) {
-    this.cartService.removeFromCart(product);
-  }
+
 }
