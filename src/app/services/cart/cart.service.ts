@@ -10,13 +10,15 @@ export class CartService {
   
   constructor() { }
 
+  // Ask a senior whether to move these functions 
+  // to the cart component or do the exact opposite
+  // and move the functions in the component in the service
+
   addToCart(product: Product) {
     this.items.push(product);
   }
 
-  // these functions should be in the cart component
   removeFromCart(product: Product) {
-    // will take time finish it last
     let index = this.items.indexOf(product);
     if (index !== -1) {
       this.items.splice(index, 1);

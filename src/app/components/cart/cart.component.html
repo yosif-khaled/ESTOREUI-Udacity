@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Item Name</th>
+      <th scope="col">Image</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price/Unit</th>
       <th scope="col">Total</th>
@@ -14,21 +15,36 @@
       <th>{{item.id}}</th>
       <td>{{item.name}}</td>
       <td>
-        <button (click)="incrementQuantity(item)">+</button>
-        <p>{{ item.qnty }}</p>
-        <button (click)="decrementQuantity(item)">-</button>
+        <img src="{{ item.url }}" width="50px" height="50px">
+      </td>
+      <td>
+        <div>
+          <button class="btn btn-outline-secondary btn-sm" (click)="incrementQuantity(item)"><i
+              class="fas fa-plus-circle"></i></button>
+          <script>
+            {
+              {
+                item.qnty
+              }
+            }
+
+          </script>
+          <button class="btn btn-outline-secondary btn-sm" (click)="decrementQuantity(item)"><i
+              class="fas fa-minus-circle"></i></button>
+        </div>
       </td>
       <td>{{item.price}}</td>
       <td>{{item.price * item.qnty!}}</td>
       <td>
-        <button (click)="removeFromCart(item)"></button>
+        <button class="btn btn-outline-secondary btn-sm" (click)="removeFromCart(item)"><i
+            class="fas fa-regular fa-trash"></i></button>
       </td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td>Grand Total</td>
-      <td>{{calculateGrandTotal()}}</td>
+      <td colspan="5">Grand Total</td>
+      <td colspan="2">{{calculateGrandTotal()}}</td>
     </tr>
   </tfoot>
 </table>
@@ -36,3 +52,27 @@
 <div>
   <app-submition-form></app-submition-form>
 </div>
+
+
+<!-- <div class="container">
+  <div class="row">
+    <h2>Simple Quantity increment buttons with Javascript </h2>
+
+
+    <div class="col-lg-2">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+        </span>
+        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+        <span class="input-group-btn">
+          <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div> -->
