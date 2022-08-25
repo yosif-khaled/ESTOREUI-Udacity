@@ -1,0 +1,54 @@
+<div class="col-lg-4 mb-3">
+  <div class="card" id="product-card">
+    <div class="img-container">
+      <img src="{{ product.url }}" alt="{{ product.name }}" class="image card-img-top">
+      <div class="overlay">
+        <div id="overlay-btn">
+          <button class="btn btn-outline-primary btn-lg" (click)="decrement()" name="decrementQnty">
+            <i class="fas fa-cart-plus mr-2"></i>
+          </button>
+          <div id="overlay-qnty">
+            <input value="{{qnty}}" style="text-align: center;">
+          </div>
+          <button class="btn btn-outline-primary btn-lg" >
+            <i class="fas fa-cart-plus mr-2" (click)="increment()" name="incrementQnty"></i>
+          </button>
+        </div>
+        <button class="btn btn-outline-primary btn-lg" (click)="addToCart(product)" name="addToCart">
+          <i class="fas fa-cart-plus mr-2"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">
+        <a [title]="product.name + ' ' + 'Click for Description'" [routerLink]="['/products', product.id]">
+          {{ product.name }}
+        </a>
+      </h5>
+      <h6 class="card-subtitle mb-2 text-muted">Product: {{ product.price | currency }}</h6>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>Simple Quantity increment buttons with Javascript </h2>
+
+
+    <!-- <div class="col-lg-2">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
+            <span class="glyphicon glyphicon-minus"></span>
+          </button>
+        </span>
+        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="10" min="1" max="100">
+        <span class="input-group-btn">
+          <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div> -->

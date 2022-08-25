@@ -9,10 +9,10 @@ import { CartService } from 'src/app/services/cart/cart.service';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
-  
-  qnty: number = 1;
-  @Input('product') product!: Product;
 
+  @Input('product') product!: Product;
+  qnty: number = 1;
+  
   constructor(
     private cartService: CartService,
   ) {}

@@ -1,6 +1,6 @@
 export interface CustomerData {
     name: string,
     email: string,
-    phone: number,
+    phone?: number,
     card: number,
   }

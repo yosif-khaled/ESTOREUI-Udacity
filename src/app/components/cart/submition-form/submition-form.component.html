@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <h5>Please Fill The Form</h5>
+  <form #customerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div action="form-group">
+
+      <label>name:</label>
+      <input 
+        required
+        type="text"
+        name="name"
+        placeholder="Enter Your Name"
+        minlength="3"
+        #name="ngModel"
+        [class.is-invalid]="name.invalid && name.touched"
+        class="form-control"
+        [ngModel]="customerName"
+        (ngModelChange)="setCustomerName($event)">
+
+      <div *ngIf="name.errors">
+        <small class="text-danger" *ngIf="name.touched">Name is required</small>
+        <br>
+        <small class="text-danger" *ngIf="name.errors?.['minlength']">Name Must be more than 3 Digits</small>
+      </div>
+    </div>
+
+    <br>
+    <hr>
+    <div action="form-group">
+      <label>email:</label>
+      <input
+        required
+        #email="ngModel"
+        type="email"
+        class="form-control"
+        name="email"
+        [class.is-invalid]="email.invalid && email.touched"
+        placeholder="Enter email"
+        [ngModel]="customerEmail"
+        (ngModelChange)="setCustomerEmail($event)">
+    </div>
+
+    <br>
+    <hr>
+    <div action="form-group">
+      <label>Credit Card:</label>
+      <input
+        type="card"
+        #card="ngModel"
+        pattern="^\d{11}$"
+        placeholder="Enter Credit Card Data"
+        required [class.is-invalid]="card.invalid && card.touched"
+        class="form-control"
+        name="card"
+        [ngModel]="customerCard"
+        (ngModelChange)="setCustomerCard($event)">
+
+      <div *ngIf="card.errors">
+        <small class="text-danger" *ngIf="card.invalid && card.touched">Card Number is Required</small>
+        <small class="text-danger" *ngIf="card.errors?.['pattern']">Number Must be 11 Digits</small>
+      </div>
+    </div>
+
+    <br>
+    <hr>
+    <button [disabled]="customerForm.form.invalid || customerForm.form.untouched" type="submit"
+      class="btn btn-primary" (click)="redirectToConfirmation()">
+      Submit
+    </button>
+  </form>
+</div>
