@@ -1,27 +1,29 @@
-# EstoreUI
+# ESTOREUI-Udacity Angular-Cross-Skilling
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+## ESTOREUI-Udacity
+    an Angular application that allows users to view a list of available products to purchase, add them to a shopping cart, and ultimately complete the checkout process.
 
-## Development server
+## Installation
+    1. Download code from github
+    2. navigate to the project directory in the terminal
+    3. type: "npm install" then press Enter
+    4. wait for the dependencies to install
+    5. run: "ng serve" to run app on default port
+    6. open your favourite browser
+    7. type "localhost:4200"
+    8. in case you need to change the port
+    9. run: "ng serve --port=xxxx" where xxxx is the port number
+    10. type "localhost:xxxx"
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Project Features
+    - Product list page, which displays the available products for the user to choose and add to their cart (in various quantities)
+    - Product details page, which displays more information about any particular product
+    - Shopping cart, which includes the products that the user has added to their cart
+    - Checkout form, which collects information about the user (e.g., name, address, payment details, etc.)
+    - Order confirmation page, which shows the outcome after the user completes the checkout process (i.e., submits the checkout form)
 
-## Code scaffolding
+## App Folder Structure
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    ### this Image contains app folder structure
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ![Folder Structure](Folder\Folder%20Structure.png Structure.png)
