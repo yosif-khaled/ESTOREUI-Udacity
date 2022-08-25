@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <h5>Please Fill The Form</h5>
-  <form #customerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
     <div action="form-group">
 
       <label>name:</label>
@@ -63,7 +63,7 @@
     <br>
     <hr>
     <button [disabled]="customerForm.form.invalid || customerForm.form.untouched" type="submit"
-      class="btn btn-primary" (click)="redirectToConfirmation()">
+      class="btn btn-primary">
       Submit
     </button>
   </form>

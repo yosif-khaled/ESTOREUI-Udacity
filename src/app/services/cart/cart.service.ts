@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CustomerData } from 'src/app/models/customer-model';
 import { Product } from 'src/app/models/product-model';
 
 @Injectable({
@@ -7,9 +8,8 @@ import { Product } from 'src/app/models/product-model';
 export class CartService {
 
   items: Product[] = [];
+  customerData!: CustomerData;
   
-  constructor() { }
-
   // Ask a senior whether to move these functions 
   // to the cart component or do the exact opposite
   // and move the functions in the component in the service
@@ -32,6 +32,14 @@ export class CartService {
   clearItems() {
     this.items = [];
     return this.items;
+  }
+
+  updateCustomerData(d: CustomerData) {
+    this.customerData = d;
+  }
+
+  formData(): CustomerData {
+    return this.customerData;
   }
 
 }

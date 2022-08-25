@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerData } from 'src/app/models/customer-model';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-submition-form',
@@ -10,9 +11,10 @@ import { CustomerData } from 'src/app/models/customer-model';
 
 export class SubmitionFormComponent {
 
-  constructor (
+  constructor(
     private route: Router,
-  ) {}
+    private cartService: CartService,
+  ) { }
 
   customerData: CustomerData = {
     name: 'John Doe',
@@ -24,15 +26,15 @@ export class SubmitionFormComponent {
   customerEmail!: string;
   customerCard!: number;
 
-  setCustomerName(v : string){
+  setCustomerName(v: string) {
     this.customerName = v
     this.customerData.name = this.customerName;
   }
-  setCustomerEmail(v: string){
+  setCustomerEmail(v: string) {
     this.customerEmail = v;
     this.customerData.email = this.customerEmail;
   }
-  setCustomerCard(v: number){
+  setCustomerCard(v: number) {
     this.customerCard = v;
     this.customerData.card = this.customerCard;
   }
@@ -41,11 +43,13 @@ export class SubmitionFormComponent {
     window.alert(
       `Thank you ${this.customerData.name} for your Purchase`,
     );
+    this.redirectToConfirmation();
     console.log(this.customerData);
   }
 
   redirectToConfirmation() {
     this.route.navigate(["confirmation"]);
+    this.cartService.updateCustomerData(this.customerData);
   }
 
 }
