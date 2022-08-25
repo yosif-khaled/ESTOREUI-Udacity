@@ -33,18 +33,12 @@
         type="email"
         class="form-control"
         name="email"
-        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+        email
         [class.is-invalid]="email.invalid && email.touched"
         placeholder="Enter email"
         [ngModel]="customerEmail"
         (ngModelChange)="setCustomerEmail($event)">
-
-        <div *ngIf="email.errors">
-          <small class="text-danger" *ngIf="email.touched">email is required</small>
-          <!-- requires validating code in the component -->
-          <!-- <br> -->
-          <!-- <small class="text-danger" *ngIf="name.errors?.['pattern']">Invalid email</small> -->
-        </div>
+        <!-- Still need to figure out how to validate email -->
     </div>
 
     <br>

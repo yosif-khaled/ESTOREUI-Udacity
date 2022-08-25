@@ -18,20 +18,17 @@
         <img src="{{ item.url }}" width="50px" height="50px">
       </td>
       <td>
-        <div>
-          <button class="btn btn-outline-secondary btn-sm" (click)="incrementQuantity(item)"><i
-              class="fas fa-plus-circle"></i></button>
-          <script>
-            {
-              {
-                item.qnty
-              }
-            }
-
-          </script>
-          <button class="btn btn-outline-secondary btn-sm" (click)="decrementQuantity(item)"><i
+        <!-- should be a separate component -->
+        <div class="btn-group input-group-sm" role="group" style="display: inline-block;">
+          <button type="button" class="btn btn-secondary-sm" (click)="decrementQuantity(item)"><i
               class="fas fa-minus-circle"></i></button>
+
+          <button type="number" class="btn btn-light-sm">{{item.qnty}}</button>
+
+          <button type="button" class="btn btn-secondary-sm" (click)="incrementQuantity(item)"><i
+              class="fas fa-plus-circle"></i></button>
         </div>
+        
       </td>
       <td>{{item.price}}</td>
       <td>{{item.price * item.qnty!}}</td>
@@ -43,8 +40,8 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="5">Grand Total</td>
-      <td colspan="2">{{calculateGrandTotal()}}</td>
+      <th colspan="5">Grand Total</th>
+      <th colspan="2">{{calculateGrandTotal()}}</th>
     </tr>
   </tfoot>
 </table>

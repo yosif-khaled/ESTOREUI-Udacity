@@ -10,7 +10,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { FormsModule } from '@angular/forms';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SubmitionFormComponent } from './components/cart/submition-form/submition-form.component';
 
@@ -30,7 +29,7 @@ import { SubmitionFormComponent } from './components/cart/submition-form/submiti
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

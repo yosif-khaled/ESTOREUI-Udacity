@@ -1,8 +1,6 @@
 <br>
-<section class="gallery" *ngFor="let product of products">
-  <div class="container">
-    <div class="row">
-      <app-product-item id="card" [product]="product"></app-product-item>
-    </div>
+<div class="grid-container">
+  <div *ngFor="let product of products">
+    <app-product-item id="card" [product]="product"></app-product-item>
   </div>
-</section>
+</div>
