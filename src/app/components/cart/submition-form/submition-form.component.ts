@@ -14,7 +14,9 @@ export class SubmitionFormComponent {
   constructor(
     private route: Router,
     private cartService: CartService,
-  ) { }
+  ) {}
+
+  cartIsEmpty = this.cartService.cartIsEmpty;
 
   customerData: CustomerData = {
     name: 'John Doe',
@@ -40,11 +42,8 @@ export class SubmitionFormComponent {
   }
 
   onSubmit() {
-    window.alert(
-      `Thank you ${this.customerData.name} for your Purchase`,
-    );
     this.redirectToConfirmation();
-    console.log(this.customerData);
+    // console.log(this.cartIsEmpty);
   }
 
   redirectToConfirmation() {

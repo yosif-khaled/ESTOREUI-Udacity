@@ -9,13 +9,21 @@ export class CartService {
 
   items: Product[] = [];
   customerData!: CustomerData;
+  cartIsEmpty: boolean = true;
   
   // Ask a senior whether to move these functions 
   // to the cart component or do the exact opposite
   // and move the functions in the component in the service
 
+  checkIfCartIsEmpty() {
+    if (this.items === []) {
+      this.cartIsEmpty = true;
+    } else this.cartIsEmpty = false;
+  }
+
   addToCart(product: Product) {
     this.items.push(product);
+    this.checkIfCartIsEmpty();
   }
 
   removeFromCart(product: Product) {
@@ -23,6 +31,7 @@ export class CartService {
     if (index !== -1) {
       this.items.splice(index, 1);
     }
+    this.checkIfCartIsEmpty();
   }
 
   getItems() {
