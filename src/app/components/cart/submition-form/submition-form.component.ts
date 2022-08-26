@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter, Input, OnInit, AfterViewInit, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input, DoCheck, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { CustomerData } from 'src/app/models/customer-model';
 import { CartService } from 'src/app/services/cart/cart.service';
 
@@ -9,30 +10,38 @@ import { CartService } from 'src/app/services/cart/cart.service';
   styleUrls: ['./submition-form.component.css']
 })
 
-export class SubmitionFormComponent implements OnChanges {
+export class SubmitionFormComponent implements DoCheck {
+
+  @Input() cartIsEmpty!: boolean;
+  @Input() message!: string;
+  @Output() messageEvent = new EventEmitter<string>();
 
   constructor(
     private route: Router,
     private cartService: CartService,
+    private cd: ChangeDetectorRef,
   ) { }
 
-  @Input() cartIsEmpty!: boolean;
-
-  @Input() message!: string;
-  @Output() messageEvent = new EventEmitter<string>();
-
   setMessage(b: boolean) {
-    if (this.cartIsEmpty == true) {
+    if (b == true || b == undefined) {
       this.message = 'Please Select at Least One product';
     } else {
       this.message = 'Good Choice of Products';
+      console.log(`setMessage: ${b} message Text: ${this.message}`);
     }
-    this.messageEvent.emit();
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    const isEmptyValue = changes['cartIsEmpty'];
-    console.log('ngOnChanges: ' + isEmptyValue.currentValue + ' ... ' + isEmptyValue.previousValue);
-    this.setMessage(isEmptyValue.currentValue);
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   const isEmptyValue = changes['cartIsEmpty'];
+  //   this.setMessage(isEmptyValue.currentValue);
+  //   console.log(`isEmpty ngOnchanges form-C: =${isEmptyValue.currentValue}, message: ${this.message} `);
+  //   this.messageEvent.emit();
+  // }
+
+  ngDoCheck() {
+    this.cd.detectChanges();
+    this.setMessage(this.cartIsEmpty);
+    console.log(`Do Check form-C001: ${this.cartIsEmpty} , message: ${this.message}`);
   }
 
   customerData: CustomerData = {

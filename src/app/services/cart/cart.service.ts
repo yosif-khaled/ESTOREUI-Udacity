@@ -15,15 +15,14 @@ export class CartService {
   // to the cart component or do the exact opposite
   // and move the functions in the component in the service
 
-  checkIfCartIsEmpty(b: boolean) {
-    if (this.items.length == 0) {
-      b = true;
-      this.cartIsEmpty = b;
+  checkIfCartIsEmpty(i: Product[]) {
+    if (i.length == 0 || typeof i == undefined) {
+      this.cartIsEmpty = true;
+      console.log(`Cart cart-s001 ${this.cartIsEmpty}`);
     } else {
-      b = false;
-      this.cartIsEmpty
+      this.cartIsEmpty = false;
+      console.log(`Cart cart-s002 ${this.cartIsEmpty}`);
     }
-    console.log(b, typeof this.items)
   }
 
   isCartEmpty() : boolean{
@@ -36,12 +35,11 @@ export class CartService {
     this.cartIsEmpty = false;
   }
 
-  removeFromCart(product: Product, b: boolean) {
+  removeFromCart(product: Product) {
     let index = this.items.indexOf(product);
     if (index !== -1) {
       this.items.splice(index, 1);
     }
-    this.checkIfCartIsEmpty(b);
   }
 
   getItems() {
