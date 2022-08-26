@@ -20,7 +20,8 @@ export class ConfirmationComponent implements OnInit {
   ngOnInit(): void {
     // in case I wanted to display this data to the user
     this.customerData = this.cartService.customerData;
-    this.customerItems = this.cartService.getItems();
+    // this.customerItems = this.cartService.getItems();
+    this.cartService.clearItems();
   }
 
 }

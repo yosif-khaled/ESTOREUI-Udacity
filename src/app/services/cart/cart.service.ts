@@ -15,23 +15,33 @@ export class CartService {
   // to the cart component or do the exact opposite
   // and move the functions in the component in the service
 
-  checkIfCartIsEmpty() {
-    if (this.items === []) {
-      this.cartIsEmpty = true;
-    } else this.cartIsEmpty = false;
+  checkIfCartIsEmpty(b: boolean) {
+    if (this.items.length == 0) {
+      b = true;
+      this.cartIsEmpty = b;
+    } else {
+      b = false;
+      this.cartIsEmpty
+    }
+    console.log(b, typeof this.items)
   }
+
+  isCartEmpty() : boolean{
+    return this.cartIsEmpty;
+  }
+  
 
   addToCart(product: Product) {
     this.items.push(product);
-    this.checkIfCartIsEmpty();
+    this.cartIsEmpty = false;
   }
 
-  removeFromCart(product: Product) {
+  removeFromCart(product: Product, b: boolean) {
     let index = this.items.indexOf(product);
     if (index !== -1) {
       this.items.splice(index, 1);
     }
-    this.checkIfCartIsEmpty();
+    this.checkIfCartIsEmpty(b);
   }
 
   getItems() {
@@ -50,5 +60,13 @@ export class CartService {
   formData(): CustomerData {
     return this.customerData;
   }
+
+  // cartMessage(message: string) {
+  //   if (this.cartIsEmpty == true) {
+  //     message = 'Please Select at Least One product';
+  //   } else {
+  //     message = 'Good Choice of Products';
+  //   }
+  // }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product-model';
 import { CartService } from 'src/app/services/cart/cart.service';
 
@@ -7,15 +7,30 @@ import { CartService } from 'src/app/services/cart/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
 
   items = this.cartService.getItems();
-
+  isEmpty!: boolean;
+  message!: string;
   total: number = 0;
 
   constructor(
     private cartService: CartService,
-  ) { }
+  ) {
+    // this.isEmpty = this.cartService.isCartEmpty();
+   }
+
+  receiveMesssage($event: string) {
+    this.message = $event;
+    console.log(this.message);
+
+    this.isEmpty = this.cartService.isCartEmpty();
+    console.log( '2: ' + this.isEmpty);
+  }
+
+  ngOnInit(): void {
+    this.isEmpty = this.cartService.isCartEmpty();
+  }
 
   incrementQuantity(item: Product){
     item.qnty! += 1;
@@ -38,13 +53,7 @@ export class CartComponent {
   }
 
   removeFromCart(product: Product) {
-    this.cartService.removeFromCart(product);
+    this.cartService.removeFromCart(product, this.isEmpty);
+    alert(`${product.name} has been removed from cart`);
   }
-
-  // onSubmit(): void {
-  //   console.warn('Your Order Has Been Submitted', this.checkoutForm.value);
-  //   this.items = this.cartService.clearItems();
-  //   this.checkoutForm.reset();
-  // }
-
 }

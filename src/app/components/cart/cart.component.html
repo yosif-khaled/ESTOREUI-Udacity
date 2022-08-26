@@ -1,3 +1,4 @@
+<h2>{{ form.message }}</h2>
 <table class="table">
   <thead>
     <tr>
@@ -47,5 +48,5 @@
 </table>
 
 <div>
-  <app-submition-form></app-submition-form>
+  <app-submition-form #form [message]="message" [cartIsEmpty]="isEmpty" (messageEvent)="receiveMesssage($event)"></app-submition-form>
 </div>

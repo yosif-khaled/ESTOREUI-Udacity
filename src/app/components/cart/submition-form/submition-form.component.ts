@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit, AfterViewInit, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerData } from 'src/app/models/customer-model';
 import { CartService } from 'src/app/services/cart/cart.service';
@@ -9,14 +9,31 @@ import { CartService } from 'src/app/services/cart/cart.service';
   styleUrls: ['./submition-form.component.css']
 })
 
-export class SubmitionFormComponent {
+export class SubmitionFormComponent implements OnChanges {
 
   constructor(
     private route: Router,
     private cartService: CartService,
-  ) {}
+  ) { }
 
-  cartIsEmpty = this.cartService.cartIsEmpty;
+  @Input() cartIsEmpty!: boolean;
+
+  @Input() message!: string;
+  @Output() messageEvent = new EventEmitter<string>();
+
+  setMessage(b: boolean) {
+    if (this.cartIsEmpty == true) {
+      this.message = 'Please Select at Least One product';
+    } else {
+      this.message = 'Good Choice of Products';
+    }
+    this.messageEvent.emit();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    const isEmptyValue = changes['cartIsEmpty'];
+    console.log('ngOnChanges: ' + isEmptyValue.currentValue + ' ... ' + isEmptyValue.previousValue);
+    this.setMessage(isEmptyValue.currentValue);
+  }
 
   customerData: CustomerData = {
     name: 'John Doe',
@@ -42,8 +59,8 @@ export class SubmitionFormComponent {
   }
 
   onSubmit() {
+    console.log(this.cartIsEmpty);
     this.redirectToConfirmation();
-    // console.log(this.cartIsEmpty);
   }
 
   redirectToConfirmation() {
